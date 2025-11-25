@@ -109,12 +109,39 @@ body {
   from { transform:scale(.4); opacity:1; }
   to { transform:scale(1.8); opacity:0; }
 }
+
+/* Loading Screen */
+#loadingScreen {
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:black;
+  z-index:200;
+  color:white;
+  text-align:center;
+  font-family:'Poppins',sans-serif;
+  animation:fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+@keyframes float {
+  0% { transform:translateY(0); }
+  50% { transform:translateY(-12px); }
+  100% { transform:translateY(0); }
+}
 </style>
 </head>
 
 <body>
 
-<!-- 🌟 Background Music -->
+<!-- Background Music -->
 <audio autoplay loop>
   <source src="https://files.catbox.moe/0h8f4p.mp3" type="audio/mp3">
 </audio>
@@ -128,6 +155,17 @@ body {
 <button class="no" id="noBtn" onclick="escapeNo()">NO 😳</button>
 
 <div id="typeBox"></div>
+
+<!-- Loading Transition Screen -->
+<div id="loadingScreen">
+  <div style="font-size:70px; margin-bottom:20px; animation:float 2s infinite ease-in-out;">
+    ❤️
+  </div>
+  <div style="font-size:24px; font-weight:600; margin-bottom:10px;">
+    Preparing our future together…
+  </div>
+  <div id="dots" style="font-size:26px; letter-spacing:3px;">• • •</div>
+</div>
 
 <script>
 // Floating emojis
@@ -162,10 +200,10 @@ function escapeNo(){
   const btn=document.getElementById("noBtn");
   btn.style.left=Math.random()*70+"%";
   btn.style.top=Math.random()*60+"%";
-  btn.style.bottom=""; 
+  btn.style.bottom="";
 }
 
-// YES → typewriter
+// YES → typewriter + loading → screen 3
 function sayYes(){
   fireworks();
   setTimeout(()=>fireworks(),600);
@@ -189,11 +227,35 @@ function sayYes(){
     }
   }
 
+  // Start typewriter
   type(t1,()=>{
     box.innerHTML="";
     i=0;
+
     type(t2,()=>{
-      box.onclick=()=>box.remove();
+
+      // --- SHOW LOADING SCREEN ---
+      setTimeout(()=>{
+
+        document.getElementById("typeBox").style.display="none";
+        const load = document.getElementById("loadingScreen");
+        load.style.display = "flex";
+
+        // Animated loading dots
+        let dots = document.getElementById("dots");
+        let dotCount = 1;
+
+        setInterval(()=>{
+          dots.innerHTML = "• ".repeat(dotCount);
+          dotCount = (dotCount % 3) + 1;
+        }, 400);
+
+        // Redirect to future screen
+        setTimeout(()=>{
+          window.location.href = "future.html";
+        }, 3500);
+
+      }, 1500);
     });
   });
 }
