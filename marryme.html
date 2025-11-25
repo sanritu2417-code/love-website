@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Will You Marry Me?</title>
+
+<style>
+body {
+  margin:0;
+  padding:0;
+  background:black;
+  overflow:hidden;
+  text-align:center;
+  color:white;
+  font-family:'Poppins',sans-serif;
+}
+
+/* Spotlight */
+#spot {
+  position:fixed;
+  inset:0;
+  background: radial-gradient(circle, rgba(255,255,255,.12), transparent 70%);
+  animation:pulse 2s infinite alternate;
+  pointer-events:none;
+}
+@keyframes pulse {
+  from { opacity:.3; }
+  to { opacity:.9; }
+}
+
+/* Ring */
+.ring {
+  font-size:110px;
+  margin-top:80px;
+  animation:ringzoom 2s ease forwards;
+}
+@keyframes ringzoom {
+  from { transform:scale(.2); opacity:0; }
+  to { transform:scale(1); opacity:1; }
+}
+
+/* Text */
+.proposal {
+  font-size:28px;
+  margin-top:20px;
+  animation:fadein 2s ease forwards;
+}
+@keyframes fadein {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+/* Buttons */
+.yes, .no {
+  padding:14px 32px;
+  font-size:22px;
+  border:none;
+  border-radius:30px;
+  margin-top:40px;
+}
+.yes { background:#ff2f75; color:white; }
+
+.no {
+  background:#888;
+  color:white;
+  position:absolute;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+/* Typewriter screen */
+#typeBox {
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.85);
+  color:white;
+  font-size:24px;
+  font-weight:600;
+  padding:20px;
+  text-align:center;
+  line-height:1.5;
+  z-index:100;
+}
+
+/* Hearts & Roses */
+.float {
+  position:fixed;
+  font-size:30px;
+  animation:fall 8s linear infinite;
+  opacity:.85;
+}
+@keyframes fall {
+  from { transform:translateY(-10vh); }
+  to { transform:translateY(110vh); opacity:0; }
+}
+
+/* Fireworks */
+.firework {
+  position:fixed;
+  font-size:28px;
+  animation:boom 1.2s ease-out forwards;
+}
+@keyframes boom {
+  from { transform:scale(.4); opacity:1; }
+  to { transform:scale(1.8); opacity:0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌟 Background Music -->
+<audio autoplay loop>
+  <source src="https://files.catbox.moe/0h8f4p.mp3" type="audio/mp3">
+</audio>
+
+<div id="spot"></div>
+
+<div class="ring">💍</div>
+<div class="proposal">My love Vishnupriya,<br>Will you marry me?</div>
+
+<button class="yes" onclick="sayYes()">YES ❤️</button>
+<button class="no" id="noBtn" onclick="escapeNo()">NO 😳</button>
+
+<div id="typeBox"></div>
+
+<script>
+// Floating emojis
+const floaters=["🌹","❤️","💖","✨"];
+for(let i=0;i<25;i++){
+  let e=document.createElement("div");
+  e.className="float";
+  e.innerHTML=floaters[Math.floor(Math.random()*floaters.length)];
+  e.style.left=Math.random()*100+"%";
+  e.style.animationDuration=(4+Math.random()*4)+"s";
+  document.body.appendChild(e);
+}
+
+// Fireworks
+function fireworks(){
+  const cx=window.innerWidth/2;
+  const cy=window.innerHeight/3;
+  const em=["❤️","✨","💖","💫","🌸"];
+  for(let i=0;i<15;i++){
+    let f=document.createElement("div");
+    f.className="firework";
+    f.innerHTML=em[Math.floor(Math.random()*em.length)];
+    f.style.left=cx+(Math.random()*140-70)+"px";
+    f.style.top=cy+(Math.random()*80-40)+"px";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1300);
+  }
+}
+
+// NO runs away
+function escapeNo(){
+  const btn=document.getElementById("noBtn");
+  btn.style.left=Math.random()*70+"%";
+  btn.style.top=Math.random()*60+"%";
+  btn.style.bottom=""; 
+}
+
+// YES → typewriter
+function sayYes(){
+  fireworks();
+  setTimeout(()=>fireworks(),600);
+
+  const box=document.getElementById("typeBox");
+  box.style.display="flex";
+  box.innerHTML="";
+
+  const t1="I promise to hold your hand, protect your heart, love you endlessly, and walk with you forever.";
+  const t2="Thank you for choosing me, my love, Vishnupriya ❤️";
+
+  let i=0;
+
+  function type(text,next){
+    if(i<text.length){
+      box.innerHTML+=text.charAt(i);
+      i++;
+      setTimeout(()=>type(text,next),40);
+    } else {
+      setTimeout(next,1200);
+    }
+  }
+
+  type(t1,()=>{
+    box.innerHTML="";
+    i=0;
+    type(t2,()=>{
+      box.onclick=()=>box.remove();
+    });
+  });
+}
+</script>
+
+</body>
+</html>
