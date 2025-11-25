@@ -9,24 +9,23 @@
 body {
   margin:0;
   padding:0;
-  background: radial-gradient(circle at center, #000, #111, #000);
+  background:black;
   overflow:hidden;
   text-align:center;
   color:white;
   font-family:'Poppins',sans-serif;
 }
 
-/* Music */
+/* Hide music controls */
 audio { display:none; }
 
 /* Dancing Couple */
 #couple {
   font-size:120px;
   animation:dance 3s ease-in-out infinite;
-  margin-top:100px;
-  filter:drop-shadow(0 0 12px rgba(255,255,255,.6));
+  margin-top:120px;
+  filter:drop-shadow(0 0 20px rgba(255,255,255,.8));
 }
-
 @keyframes dance {
   0% { transform:translateY(0) rotate(0deg); }
   25% { transform:translateY(-20px) rotate(5deg); }
@@ -35,7 +34,48 @@ audio { display:none; }
   100% { transform:translateY(0) rotate(0deg); }
 }
 
-/* Golden Sparkles */
+/* Stars */
+.star {
+  position:fixed;
+  width:2px; height:2px;
+  background:white;
+  border-radius:50%;
+  animation:twinkle 2s infinite ease-in-out;
+  opacity:.7;
+}
+@keyframes twinkle {
+  0% { opacity:.3; }
+  50% { opacity:1; }
+  100% { opacity:.3; }
+}
+
+/* Shooting Stars */
+.shoot {
+  position:fixed;
+  width:3px; height:80px;
+  background:white;
+  transform:rotate(-45deg);
+  animation:shoot 1s linear forwards;
+  opacity:.7;
+  border-radius:2px;
+}
+@keyframes shoot {
+  from { transform:translate(0,0) rotate(-45deg); opacity:1; }
+  to { transform:translate(-300px,300px) rotate(-45deg); opacity:0; }
+}
+
+/* Floating Hearts */
+.floatingHeart {
+  position:fixed;
+  font-size:25px;
+  animation:rise 6s linear infinite;
+}
+@keyframes rise {
+  0% { transform:translateY(100vh); opacity:1; }
+  100% { transform:translateY(-20vh); opacity:0; }
+}
+
+/* Gold Sparkles */
 .spark {
   position:fixed;
   width:6px;height:6px;
@@ -43,8 +83,7 @@ audio { display:none; }
   border-radius:50%;
   box-shadow:0 0 12px gold;
   animation:sparkle 4s linear infinite;
-  opacity:.7;
-  z-index:2;
+  opacity:.8;
 }
 @keyframes sparkle {
   from { transform:translateY(-10vh); opacity:1; }
@@ -56,7 +95,6 @@ audio { display:none; }
   position:fixed;
   font-size:25px;
   animation:boom 1.2s ease-out forwards;
-  z-index:3;
 }
 @keyframes boom {
   from { transform:scale(.4); opacity:1; }
@@ -72,12 +110,12 @@ audio { display:none; }
   margin-left:auto;
   margin-right:auto;
   line-height:1.6;
-  min-height:180px;
+  min-height:200px;
 }
 
-/* Continue Button */
+/* Button */
 .next-btn {
-  margin-top:30px;
+  margin-top:20px;
   padding:14px 32px;
   background:#ff2f75;
   color:white;
@@ -88,20 +126,52 @@ audio { display:none; }
   box-shadow:0 5px 15px rgba(255,50,120,.4);
 }
 .next-btn:active { transform:scale(.95); }
-
 </style>
 </head>
 
 <body>
 
-<!-- La La Land BGM -->
+<!-- 🎵 La La Land BGM -->
 <audio autoplay loop>
   <source src="https://files.catbox.moe/6n7y9e.mp3" type="audio/mp3">
 </audio>
 
-<!-- Sparkles -->
 <script>
-for(let i=0;i<40;i++){
+// Starfield
+for(let i=0;i<80;i++){
+  let s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"%";
+  s.style.top=Math.random()*100+"%";
+  s.style.animationDuration=(1+Math.random()*2)+"s";
+  document.body.appendChild(s);
+}
+
+// Shooting stars
+setInterval(()=>{
+  let st=document.createElement("div");
+  st.className="shoot";
+  st.style.left=Math.random()*100+"%";
+  st.style.top=Math.random()*20+"%";
+  document.body.appendChild(st);
+  setTimeout(()=>st.remove(),1000);
+}, 2500);
+
+// Floating hearts
+const hearts=["💖","❤️","💗","💕"];
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="floatingHeart";
+  h.innerHTML=hearts[Math.floor(Math.random()*hearts.length)];
+  h.style.left=Math.random()*100+"%";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+}, 700);
+</script>
+
+<!-- Gold sparkles -->
+<script>
+for(let i=0;i<30;i++){
   let s=document.createElement("div");
   s.className="spark";
   s.style.left=Math.random()*100+"%";
@@ -113,40 +183,39 @@ for(let i=0;i<40;i++){
 <!-- Dancing Couple -->
 <div id="couple">💃🕺</div>
 
-<!-- Story Typewriter -->
+<!-- Story Text -->
 <div id="story"></div>
 
-<!-- Continue -->
-<button class="next-btn" onclick="fireworks()">Celebrate Our Future 🎉</button>
+<!-- Celebrate Button -->
+<button class="next-btn" onclick="celebrate()">Celebrate Our Future 🎉</button>
 
 <script>
 // Typewriter text
 const text = 
-"Our future together will be filled with laughter, midnight talks, warm hugs, "\
-+"our first home, our first trip, our first baby… and endless memories. ❤️";
+"Our future together will be filled with laughter, midnight talks, warm hugs, our first home, our first trip, our first baby… and endless memories. ❤️";
 
 let i = 0;
 function typeWriter(){
   if(i < text.length){
-    document.getElementById("story").innerHTML += text.charAt(i);
+    document.getElementById('story').innerHTML += text.charAt(i);
     i++;
     setTimeout(typeWriter,40);
   }
 }
 typeWriter();
 
-// Fireworks celebration
-function fireworks(){
-  const cx=window.innerWidth/2;
-  const cy=window.innerHeight/3;
-  const em=["✨","💖","💫","🌸","❤️"];
+// Celebration firework
+function celebrate(){
+  const cx = window.innerWidth / 2;
+  const cy = window.innerHeight / 3;
+  const em = ["✨","💖","💫","🌸","❤️"];
 
-  for(let i=0;i<20;i++){
-    let f=document.createElement("div");
-    f.className="firework";
-    f.innerHTML=em[Math.floor(Math.random()*em.length)];
-    f.style.left=cx+(Math.random()*150-75)+"px";
-    f.style.top=cy+(Math.random()*120-60)+"px";
+  for(let i=0; i<25; i++){
+    let f = document.createElement("div");
+    f.className = "firework";
+    f.innerHTML = em[Math.floor(Math.random() * em.length)];
+    f.style.left = cx + (Math.random() * 150 - 75) + "px";
+    f.style.top = cy + (Math.random() * 120 - 60) + "px";
     document.body.appendChild(f);
     setTimeout(()=>f.remove(),1300);
   }
