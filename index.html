@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vishnupriya Love Page 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    background: radial-gradient(circle at top, #ffe6f2 0, #ffbfd6 35%, #f8a1c4 70%, #f48fb1 100%);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  h1 {
+    font-size: 38px; margin-top: 40px;
+    color: #ffffff; font-weight: 700;
+    text-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  }
+
+  .name-highlight {
+    background: linear-gradient(90deg,#ff9acb,#ffe28f);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .quote { color: #fff0fa; font-size: 18px; }
+  #typewriter { color:#fff8fe; font-size:16px; min-height:20px; margin-bottom:10px; }
+
+  /* Sparkles */
+  .sparkle {
+    position: fixed; width: 6px; height: 6px;
+    background: #ffffff; border-radius: 50%;
+    box-shadow: 0 0 12px #ffffff;
+    animation: sparkleFall 3s linear infinite;
+    opacity:0.8; pointer-events:none;
+    z-index:1;
+  }
+  @keyframes sparkleFall {
+    from { transform: translateY(-10vh); }
+    to { transform: translateY(110vh); opacity:0; }
+  }
+
+  /* Butterflies & Roses */
+  .butterfly, .rose {
+    position: fixed; font-size: 30px;
+    animation: flyUp 10s linear infinite;
+    opacity:0.85; pointer-events:none;
+    z-index:2;
+  }
+  @keyframes flyUp {
+    from { transform: translateY(110vh); }
+    to { transform: translateY(-120vh); }
+  }
+
+  /* Hearts */
+  .heart {
+    position: fixed; font-size: 28px;
+    animation: floatUp 3s linear forwards;
+    pointer-events:none;
+    z-index:3;
+  }
+  @keyframes floatUp {
+    from { transform: translateY(0); opacity:1; }
+    to { transform: translateY(-120vh); opacity:0; }
+  }
+
+  /* Fireworks */
+  .firework {
+    position: fixed; font-size: 24px;
+    animation: boom 1.2s ease-out forwards;
+    z-index:4;
+  }
+  @keyframes boom {
+    from { transform: scale(0.4); opacity:1; }
+    to { transform: scale(1.8); opacity:0; }
+  }
+
+  /* Slideshow */
+  .slideshow {
+    margin:20px auto; width:90%; max-width:380px;
+    height:480px; border-radius:25px;
+    background:white; position:relative;
+    box-shadow:0 16px 40px rgba(0,0,0,0.35);
+    overflow:hidden;
+  }
+
+  .slideshow img {
+    width:100%; height:100%;
+    object-fit:cover; position:absolute;
+    transition: opacity .8s ease;
+  }
+  .fade-out { opacity:0; }
+
+  .buttons-row {
+    margin-top:15px;
+    display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
+  }
+
+  button {
+    padding:10px 16px;
+    border:none; border-radius:20px;
+    background:#ff4d8f; color:white;
+    font-size:15px; font-weight:600;
+    box-shadow:0 3px 10px rgba(0,0,0,0.25);
+  }
+  button:active { transform:scale(.96); }
+
+  /* Popup */
+  .popup-bg{
+    position:fixed; inset:0; display:none;
+    background:rgba(0,0,0,0.55);
+    justify-content:center; align-items:center;
+    z-index:20;
+  }
+  .popup{
+    background:#fff0f7; padding:25px;
+    border-radius:22px; width:85%; max-width:360px;
+    box-shadow:0 12px 25px rgba(0,0,0,0.3);
+    text-align:center;
+  }
+
+  /* Proposal Screen */
+  #proposalScreen {
+    display:none;
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter: blur(4px);
+    z-index:50;
+    justify-content:center; flex-direction:column;
+    align-items:center; text-align:center;
+    color:white;
+  }
+
+  .spotlight {
+    position:absolute; inset:0;
+    background: radial-gradient(circle, rgba(255,255,255,0.07), transparent 70%);
+    animation: pulse 2s infinite alternate;
+  }
+  @keyframes pulse {
+    from { opacity:0.3; }
+    to { opacity:0.9; }
+  }
+
+  .ring {
+    font-size:90px;
+    animation:ringZoom 2s ease forwards;
+    margin-bottom:20px; z-index:2;
+  }
+  @keyframes ringZoom {
+    from { transform: scale(0.1); opacity:0; }
+    to { transform: scale(1); opacity:1; }
+  }
+
+  .proposal-text {
+    font-size:30px;
+    font-weight:600;
+    margin-top:10px;
+    animation:textFade 2.5s ease forwards;
+    z-index:2;
+  }
+  @keyframes textFade {
+    from { opacity:0; }
+    to { opacity:1; }
+  }
+
+  .yes-btn,.no-btn {
+    margin-top:25px;
+    padding:12px 28px;
+    border:none; border-radius:25px;
+    font-size:18px; font-weight:600;
+    z-index:3;
+  }
+  .yes-btn { background:#ff2f75; color:white; }
+  .no-btn { background:#aaaaaa; color:white; position:absolute; }
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<iframe width="0" height="0"
+  src="https://www.youtube.com/embed/Wk7RrtEGDyo?autoplay=1&loop=1&playlist=Wk7RrtEGDyo&controls=0"
+  style="opacity:0; position:absolute;"></iframe>
+
+<!-- Sparkles -->
+<script>
+for(let i=0;i<40;i++){
+  let s=document.createElement("div");
+  s.className="sparkle";
+  s.style.left=Math.random()*100+"%";
+  s.style.animationDuration=(2+Math.random()*2)+"s";
+  document.body.appendChild(s);
+}
+</script>
+
+<!-- Butterflies & Roses -->
+<script>
+["🦋","🦋","🦋","🌹","🌹","🌹"].forEach(icon=>{
+  let e=document.createElement("div");
+  e.className=icon==="🦋"?"butterfly":"rose";
+  e.innerHTML=icon;
+  e.style.left=Math.random()*100+"%";
+  e.style.animationDuration=(7+Math.random()*5)+"s";
+  document.body.appendChild(e);
+});
+</script>
+
+<h1>💖 <span class="name-highlight">Vishnupriya</span> Love Page 💖</h1>
+<p class="quote">Every heartbeat whispers your name…</p>
+<p id="typewriter"></p>
+
+<!-- Slideshow -->
+<div class="slideshow">
+  <img id="photo" src="">
+</div>
+
+<div class="buttons-row">
+  <button onclick="heartShower()">Heart Shower 💞</button>
+  <button onclick="launchFireworks()">Fireworks 🎆</button>
+  <button onclick="openLove()">I Love You ❤️</button>
+  <button onclick="openProposal()">Will You Marry Me? 💍</button>
+</div>
+
+<!-- Proposal Screen -->
+<div id="proposalScreen">
+  <div class="spotlight"></div>
+  <div class="ring">💍</div>
+
+  <div class="proposal-text">Will You Marry Me,<br>My Love <b>Vishnupriya</b>?</div>
+
+  <button class="yes-btn" onclick="sheSaidYes()">YES ❤️</button>
+  <button class="no-btn" id="noBtn" onclick="runAway()">NO 😳</button>
+</div>
+
+<!-- I LOVE YOU Popup -->
+<div id="popupBG" class="popup-bg">
+  <div class="popup">
+    <h2>I LOVE YOU ❤️</h2>
+    <p>You mean everything to me, my dear Vishnupriya.</p>
+    <button onclick="closeLove()">Close 💗</button>
+  </div>
+</div>
+
+<script>
+// ---- Photos ----
+const photos = [
+  "https://i.ibb.co/dsrzqqZD/image.jpg",
+  "https://i.ibb.co/nNv9ymLx/image.jpg",
+  "https://i.ibb.co/39ZTSpg0/image.jpg",
+  "https://i.ibb.co/mCh75bjY/image.jpg",
+  "https://i.ibb.co/B50WN3VY/image.jpg",
+  "https://i.ibb.co/ZRdcfSJb/image.jpg"
+];
+
+let index = 0;
+const imgEl = document.getElementById("photo");
+imgEl.src = photos[index];
+
+// Auto Slideshow
+setInterval(() => {
+  imgEl.classList.add("fade-out");
+  setTimeout(() => {
+    index = (index + 1) % photos.length;
+    imgEl.src = photos[index];
+    imgEl.classList.remove("fade-out");
+  }, 500);
+}, 3000);
+
+// Typewriter
+const message = "This universe inside this page is only for you, my dear Vishnupriya. 💖";
+let t = 0;
+function typeWriter() {
+  if (t <= message.length) {
+    document.getElementById("typewriter").innerHTML = message.slice(0, t);
+    t++;
+    setTimeout(typeWriter, 50);
+  }
+}
+typeWriter();
+
+// Heart Shower
+function heartShower() {
+  for (let i = 0; i < 20; i++) {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random()*100 + "vw";
+    h.style.top = "100vh";
+    h.style.animationDuration = (2 + Math.random()*2) + "s";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 3200);
+  }
+}
+
+// Fireworks
+function launchFireworks() {
+  const cx = window.innerWidth / 2;
+  const cy = window.innerHeight / 3;
+  const em = ["❤️","✨","💖","💫","🌸"];
+  for (let i=0;i<15;i++){
+    const f=document.createElement("div");
+    f.className="firework";
+    f.innerHTML=em[Math.floor(Math.random()*em.length)];
+    f.style.left=cx+(Math.random()*120-60)+"px";
+    f.style.top=cy+(Math.random()*60-30)+"px";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1300);
+  }
+}
+
+// Popup
+function openLove() {
+  document.getElementById("popupBG").style.display = "flex";
+}
+function closeLove() {
+  document.getElementById("popupBG").style.display = "none";
+}
+
+// Proposal
+function openProposal() {
+  document.getElementById("proposalScreen").style.display = "flex";
+}
+
+function runAway() {
+  const btn = document.getElementById("noBtn");
+  btn.style.left = Math.random()*70 + "%";
+  btn.style.top = Math.random()*60 + "%";
+}
+
+function sheSaidYes() {
+  launchFireworks();
+  setTimeout(() => launchFireworks(), 600);
+
+  setTimeout(() => { 
+    alert("I can’t wait to spend my whole life with you ❤️");
+  }, 300);
+
+  setTimeout(() => { 
+    alert("You just made me the happiest person in the world 💍😭");
+  }, 1500);
+
+  setTimeout(() => {
+    document.getElementById("proposalScreen").style.display = "none";
+  }, 1800);
+}
+</script>
+
+</body>
+  </html>
