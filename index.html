@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vishnupriya Love Page 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  padding:0;
+  font-family:'Poppins',sans-serif;
+  text-align:center;
+  background: radial-gradient(circle at top, #ffe6f2, #ffbfd6, #f48fb1);
+  overflow-x:hidden;
+}
+
+/* Glitter border */
+.glitter-box {
+  border:4px solid transparent;
+  border-radius:22px;
+  padding:12px;
+  animation:glitter 2s infinite linear;
+}
+@keyframes glitter {
+  0% { box-shadow:0 0 8px #ff80bf; }
+  50% { box-shadow:0 0 20px #ffb3d9; }
+  100% { box-shadow:0 0 8px #ff80bf; }
+}
+
+/* Sparkles */
+.sparkle {
+  position:fixed;
+  width:6px; height:6px;
+  background:white;
+  border-radius:50%;
+  box-shadow:0 0 10px white;
+  animation:spark 3s linear infinite;
+  z-index:1;
+  opacity:.8;
+}
+@keyframes spark {
+  from { transform:translateY(-10vh); }
+  to { transform:translateY(110vh); opacity:0; }
+}
+
+/* Slideshow */
+.slideshow {
+  width:90%;
+  max-width:380px;
+  margin:25px auto;
+  padding:10px;
+  background:#fff;
+  border-radius:25px;
+  box-shadow:0 16px 40px rgba(0,0,0,.3);
+}
+.slideshow img {
+  width:100%;
+  height:auto;
+  border-radius:20px;
+  object-fit:contain;
+}
+
+.slide-buttons {
+  display:flex;
+  justify-content:center;
+  gap:20px;
+}
+.slide-btn {
+  padding:10px 20px;
+  border:none;
+  background:#ff4d8f;
+  color:white;
+  border-radius:20px;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio autoplay loop>
+  <source src="https://files.catbox.moe/0h8f4p.mp3" type="audio/mp3">
+</audio>
+
+<script>
+// Sparkles
+for(let i=0;i<40;i++){
+  let s=document.createElement("div");
+  s.className="sparkle";
+  s.style.left=Math.random()*100+"%";
+  s.style.animationDuration=(2+Math.random()*2)+"s";
+  document.body.appendChild(s);
+}
+</script>
+
+<h1>💖 Vishnupriya Love Page 💖</h1>
+<p>This universe is only for you, my love 💗</p>
+
+<!-- Slideshow -->
+<div class="slideshow glitter-box">
+  <img id="photo" src="">
+</div>
+
+<div class="slide-buttons">
+  <button class="slide-btn" onclick="prev()">💗 Prev</button>
+  <button class="slide-btn" onclick="next()">Next 💗</button>
+</div>
+
+<script>
+const photos=[
+  "https://i.ibb.co/dsrzqqZD/image.jpg",
+  "https://i.ibb.co/nNv9ymLx/image.jpg",
+  "https://i.ibb.co/39ZTSpg0/image.jpg",
+  "https://i.ibb.co/mCh75bjY/image.jpg",
+  "https://i.ibb.co/B50WN3VY/image.jpg",
+  "https://i.ibb.co/ZRdcfSJb/image.jpg"
+];
+
+let index=0;
+const img=document.getElementById("photo");
+img.src=photos[index];
+
+function next(){ index=(index+1)%photos.length; img.src=photos[index]; }
+function prev(){ index=(index-1+photos.length)%photos.length; img.src=photos[index]; }
+</script>
+
+<!-- Go to proposal page -->
+<br>
+<a href="marryme.html">
+  <button style="
+    padding:12px 28px;
+    background:#ff2f75;
+    border:none;
+    border-radius:25px;
+    color:white;
+    font-size:18px;
+    font-weight:700;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+  ">
+    Will You Marry Me? 💍
+  </button>
+</a>
+
+</body>
+</html>
