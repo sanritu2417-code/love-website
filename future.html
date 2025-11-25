@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Future Together ❤️</title>
+
+<style>
+body {
+  margin:0;
+  padding:0;
+  background: radial-gradient(circle at center, #000, #111, #000);
+  overflow:hidden;
+  text-align:center;
+  color:white;
+  font-family:'Poppins',sans-serif;
+}
+
+/* Music */
+audio { display:none; }
+
+/* Dancing Couple */
+#couple {
+  font-size:120px;
+  animation:dance 3s ease-in-out infinite;
+  margin-top:100px;
+  filter:drop-shadow(0 0 12px rgba(255,255,255,.6));
+}
+
+@keyframes dance {
+  0% { transform:translateY(0) rotate(0deg); }
+  25% { transform:translateY(-20px) rotate(5deg); }
+  50% { transform:translateY(0) rotate(0deg); }
+  75% { transform:translateY(-20px) rotate(-5deg); }
+  100% { transform:translateY(0) rotate(0deg); }
+}
+
+/* Golden Sparkles */
+.spark {
+  position:fixed;
+  width:6px;height:6px;
+  background:gold;
+  border-radius:50%;
+  box-shadow:0 0 12px gold;
+  animation:sparkle 4s linear infinite;
+  opacity:.7;
+  z-index:2;
+}
+@keyframes sparkle {
+  from { transform:translateY(-10vh); opacity:1; }
+  to { transform:translateY(110vh); opacity:0; }
+}
+
+/* Fireworks */
+.firework {
+  position:fixed;
+  font-size:25px;
+  animation:boom 1.2s ease-out forwards;
+  z-index:3;
+}
+@keyframes boom {
+  from { transform:scale(.4); opacity:1; }
+  to { transform:scale(1.8); opacity:0; }
+}
+
+/* Typewriter Text */
+#story {
+  margin-top:30px;
+  font-size:22px;
+  font-weight:600;
+  max-width:85%;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.6;
+  min-height:180px;
+}
+
+/* Continue Button */
+.next-btn {
+  margin-top:30px;
+  padding:14px 32px;
+  background:#ff2f75;
+  color:white;
+  border:none;
+  border-radius:25px;
+  font-size:20px;
+  font-weight:600;
+  box-shadow:0 5px 15px rgba(255,50,120,.4);
+}
+.next-btn:active { transform:scale(.95); }
+
+</style>
+</head>
+
+<body>
+
+<!-- La La Land BGM -->
+<audio autoplay loop>
+  <source src="https://files.catbox.moe/6n7y9e.mp3" type="audio/mp3">
+</audio>
+
+<!-- Sparkles -->
+<script>
+for(let i=0;i<40;i++){
+  let s=document.createElement("div");
+  s.className="spark";
+  s.style.left=Math.random()*100+"%";
+  s.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(s);
+}
+</script>
+
+<!-- Dancing Couple -->
+<div id="couple">💃🕺</div>
+
+<!-- Story Typewriter -->
+<div id="story"></div>
+
+<!-- Continue -->
+<button class="next-btn" onclick="fireworks()">Celebrate Our Future 🎉</button>
+
+<script>
+// Typewriter text
+const text = 
+"Our future together will be filled with laughter, midnight talks, warm hugs, "\
++"our first home, our first trip, our first baby… and endless memories. ❤️";
+
+let i = 0;
+function typeWriter(){
+  if(i < text.length){
+    document.getElementById("story").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter,40);
+  }
+}
+typeWriter();
+
+// Fireworks celebration
+function fireworks(){
+  const cx=window.innerWidth/2;
+  const cy=window.innerHeight/3;
+  const em=["✨","💖","💫","🌸","❤️"];
+
+  for(let i=0;i<20;i++){
+    let f=document.createElement("div");
+    f.className="firework";
+    f.innerHTML=em[Math.floor(Math.random()*em.length)];
+    f.style.left=cx+(Math.random()*150-75)+"px";
+    f.style.top=cy+(Math.random()*120-60)+"px";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1300);
+  }
+}
+</script>
+
+</body>
+</html>
