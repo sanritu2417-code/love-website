@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Our Future Together ❤️</title>
+<title>Will You Marry Me?</title>
 
 <style>
 body {
@@ -16,265 +16,173 @@ body {
   font-family:'Poppins',sans-serif;
 }
 
-/* Hide music controls */
-audio { display:none; }
-
-/* Dancing Couple */
-#couple {
-  font-size:120px;
-  animation:dance 3s ease-in-out infinite;
-  margin-top:120px;
-  filter:drop-shadow(0 0 20px rgba(255,255,255,.8));
-}
-@keyframes dance {
-  0% { transform:translateY(0) rotate(0deg); }
-  25% { transform:translateY(-20px) rotate(5deg); }
-  50% { transform:translateY(0) rotate(0deg); }
-  75% { transform:translateY(-20px) rotate(-5deg); }
-  100% { transform:translateY(0) rotate(0deg); }
-}
-
-/* Starry Background */
-.star {
+/* Spotlight */
+#spot {
   position:fixed;
-  width:2px; height:2px;
-  background:white;
-  border-radius:50%;
-  animation:twinkle 2s infinite ease-in-out;
-  opacity:.7;
+  inset:0;
+  background: radial-gradient(circle, rgba(255,255,255,.12), transparent 70%);
+  animation:pulse 2s infinite alternate;
+  pointer-events:none;
 }
-@keyframes twinkle {
-  0% { opacity:.3; }
-  50% { opacity:1; }
-  100% { opacity:.3; }
+@keyframes pulse {
+  from { opacity:.3; }
+  to { opacity:.9; }
 }
 
-/* Shooting Stars */
-.shoot {
-  position:fixed;
-  width:3px; height:80px;
-  background:white;
-  transform:rotate(-45deg);
-  animation:shoot 1s linear forwards;
-  opacity:.7;
-  border-radius:2px;
+/* Ring */
+.ring {
+  font-size:110px;
+  margin-top:80px;
+  animation:ringzoom 2s ease forwards;
 }
-@keyframes shoot {
-  from { transform:translate(0,0) rotate(-45deg); opacity:1; }
-  to { transform:translate(-300px,300px) rotate(-45deg); opacity:0; }
+@keyframes ringzoom {
+  from { transform:scale(.2); opacity:0; }
+  to { transform:scale(1); opacity:1; }
 }
 
-/* Hearts Rising */
-.floatingHeart {
-  position:fixed;
-  font-size:25px;
-  animation:rise 6s linear infinite;
-}
-@keyframes rise {
-  0% { transform:translateY(100vh); opacity:1; }
-  100% { transform:translateY(-20vh); opacity:0; }
-}
-
-/* Gold Sparkles */
-.spark {
-  position:fixed;
-  width:6px;height:6px;
-  background:gold;
-  border-radius:50%;
-  box-shadow:0 0 12px gold;
-  animation:sparkle 4s linear infinite;
-  opacity:.8;
-}
-@keyframes sparkle {
-  from { transform:translateY(-10vh); opacity:1; }
-  to { transform:translateY(110vh); opacity:0; }
-}
-
-/* Fireworks */
-.firework {
-  position:fixed;
-  font-size:25px;
-  animation:boom 1.2s ease-out forwards;
-}
-@keyframes boom {
-  from { transform:scale(.4); opacity:1; }
-  to { transform:scale(1.8); opacity:0; }
-}
-
-/* Typewriter Text */
-#story {
-  margin-top:30px;
-  font-size:22px;
-  font-weight:600;
-  max-width:85%;
-  margin-left:auto;
-  margin-right:auto;
-  line-height:1.6;
-  min-height:200px;
-}
-
-/* Button */
-.next-btn {
+/* Text */
+.proposal {
+  font-size:28px;
   margin-top:20px;
+  animation:fadein 2s ease forwards;
+}
+
+/* Buttons */
+.yes, .no {
   padding:14px 32px;
-  background:#ff2f75;
-  color:white;
+  font-size:22px;
   border:none;
-  border-radius:25px;
-  font-size:20px;
-  font-weight:600;
-  box-shadow:0 5px 15px rgba(255,50,120,.4);
+  border-radius:30px;
+  margin-top:40px;
 }
-.next-btn:active { transform:scale(.95); }
+.yes { background:#ff2f75; color:white; }
 
-/* Movie Credits */
-#credits {
-  position:fixed;
-  bottom:-100%;
-  width:100%;
-  text-align:center;
+.no {
+  background:#888;
   color:white;
-  font-size:20px;
-  line-height:1.8;
-  animation:none;
-}
-@keyframes scrollCredits {
-  0% { bottom:-100%; }
-  100% { bottom:100%; }
+  position:absolute;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
 }
 
-/* Kiss Pop */
-#kiss {
+/* Typewriter box */
+#typeBox {
   position:fixed;
   inset:0;
   display:none;
   justify-content:center;
   align-items:center;
-  font-size:130px;
-  animation:kissPop 1s ease-out forwards;
+  background:rgba(0,0,0,.85);
+  color:white;
+  font-size:24px;
+  font-weight:600;
+  padding:20px;
+  text-align:center;
+  z-index:100;
 }
-@keyframes kissPop {
-  0% { transform:scale(0); opacity:0; }
-  100% { transform:scale(1); opacity:1; }
+
+/* Loading Screen */
+#loadingScreen {
+  position:fixed;
+  inset:0;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:black;
+  z-index:200;
+  color:white;
+  animation:fadeIn .8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+@keyframes float {
+  0% { transform:translateY(0); }
+  50% { transform:translateY(-12px); }
+  100% { transform:translateY(0); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎵 La La Land BGM -->
 <audio autoplay loop>
-  <source src="https://files.catbox.moe/6n7y9e.mp3" type="audio/mp3">
+  <source src="https://files.catbox.moe/0h8f4p.mp3" type="audio/mp3">
 </audio>
 
-<script>
-// Create starfield
-for(let i=0;i<80;i++){
-  let s=document.createElement("div");
-  s.className="star";
-  s.style.left=Math.random()*100+"%";
-  s.style.top=Math.random()*100+"%";
-  s.style.animationDuration=(1+Math.random()*2)+"s";
-  document.body.appendChild(s);
-}
+<div id="spot"></div>
 
-// Random shooting stars
-setInterval(()=>{
-  let st=document.createElement("div");
-  st.className="shoot";
-  st.style.left=Math.random()*100+"%";
-  st.style.top=Math.random()*20+"%";
-  document.body.appendChild(st);
-  setTimeout(()=>st.remove(),1000);
-}, 2500);
+<div class="ring">💍</div>
+<div class="proposal">My love Vishnupriya,<br>Will you marry me?</div>
 
-// Floating hearts
-const heartEmojis = ["💖","❤️","💗","💕"];
-setInterval(()=>{
-  let h=document.createElement("div");
-  h.className="floatingHeart";
-  h.innerHTML=heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
-  h.style.left=Math.random()*100+"%";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-}, 700);
-</script>
+<button class="yes" onclick="sayYes()">YES ❤️</button>
+<button class="no" id="noBtn" onclick="escapeNo()">NO 😳</button>
 
-<!-- Gold Sparkles -->
-<script>
-for(let i=0;i<30;i++){
-  let s=document.createElement("div");
-  s.className="spark";
-  s.style.left=Math.random()*100+"%";
-  s.style.animationDuration=(3+Math.random()*3)+"s";
-  document.body.appendChild(s);
-}
-</script>
+<div id="typeBox"></div>
 
-<!-- Dancing Couple -->
-<div id="couple">💃🕺</div>
-
-<!-- Story Typewriter -->
-<div id="story"></div>
-
-<!-- Celebrate Button -->
-<button class="next-btn" onclick="celebrate()">Celebrate Our Future 🎉</button>
-
-<!-- Kiss Animation -->
-<div id="kiss">💋</div>
-
-<!-- Movie Credits -->
-<div id="credits">
-  <p>✨ OUR FOREVER STORY ✨</p>
-  <p>Starring: Vishnupriya ❤️</p>
-  <p>Directed by: Your Love</p>
-  <p>Produced by: Fate ✨</p>
-  <p>Music: La La Land BGM 🎶</p>
-  <p>Special Thanks: Destiny</p>
-  <p>Dedicated to: My Forever Girl 💖</p>
-  <p>THE END</p>
+<!-- Loading Screen -->
+<div id="loadingScreen">
+  <div style="font-size:70px; animation:float 2s infinite;">❤️</div>
+  <div style="font-size:24px; font-weight:600;">Preparing our future together…</div>
+  <div id="dots" style="font-size:30px;">• • •</div>
 </div>
 
 <script>
-// Typewriter story text
-const text = 
-"Our future together will be filled with laughter, midnight talks, warm hugs, our first home, our first trip, our first baby… and endless memories. ❤️";
-
-let i = 0;
-function typeWriter(){
-  if(i < text.length){
-    document.getElementById('story').innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeWriter,40);
-  }
+// NO button runs away
+function escapeNo(){
+  const btn=document.getElementById("noBtn");
+  btn.style.left=Math.random()*70+"%";
+  btn.style.top=Math.random()*60+"%";
+  btn.style.bottom="";
 }
-typeWriter();
 
-// Celebration function
-function celebrate(){
-  // Fireworks
-  const cx = window.innerWidth / 2;
-  const cy = window.innerHeight / 3;
-  const em = ["✨","💖","💫","🌸","❤️"];
+// YES button → typewriter → loading → screen 3
+function sayYes(){
+  const box=document.getElementById("typeBox");
+  box.style.display="flex";
+  box.innerHTML="";
 
-  for(let i=0; i<25; i++){
-    let f = document.createElement("div");
-    f.className = "firework";
-    f.innerHTML = em[Math.floor(Math.random() * em.length)];
-    f.style.left = cx + (Math.random() * 150 - 75) + "px";
-    f.style.top = cy + (Math.random() * 120 - 60) + "px";
-    document.body.appendChild(f);
-    setTimeout(()=>f.remove(),1300);
+  const t1="I promise to take care of you, protect you, and love you endlessly.";
+  const t2="Thank you for choosing me, my love Vishnupriya ❤️";
+
+  let i=0;
+
+  function type(text,next){
+    if(i<text.length){
+      box.innerHTML+=text.charAt(i);
+      i++;
+      setTimeout(()=>type(text,next),40);
+    } else {
+      setTimeout(next,1000);
+    }
   }
 
-  // Kiss animation
-  let k=document.getElementById("kiss");
-  k.style.display="flex";
-  setTimeout(()=>k.style.display="none",1000);
+  type(t1,()=>{
+    i=0; box.innerHTML="";
+    type(t2,()=>{
 
-  // Start movie credits
-  let cr=document.getElementById("credits");
-  cr.style.animation="scrollCredits 12s linear forwards";
+      setTimeout(()=>{
+        box.style.display="none";
+        const load=document.getElementById("loadingScreen");
+        load.style.display="flex";
+
+        let dots=document.getElementById("dots");
+        let n=1;
+        setInterval(()=>{
+          dots.innerHTML="• ".repeat(n);
+          n=(n%3)+1;
+        },400);
+
+        setTimeout(()=>{ window.location.href="future.html"; },3500);
+
+      },1000);
+    });
+  });
 }
 </script>
 
