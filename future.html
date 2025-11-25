@@ -204,7 +204,7 @@ function typeWriter(){
 }
 typeWriter();
 
-// Celebration firework
+// Celebration → then go to wedding.html (Screen 4)
 function celebrate(){
   const cx = window.innerWidth / 2;
   const cy = window.innerHeight / 3;
@@ -219,6 +219,10 @@ function celebrate(){
     document.body.appendChild(f);
     setTimeout(()=>f.remove(),1300);
   }
+
+  setTimeout(()=>{
+    window.location.href = "wedding.html";
+  }, 1500);
 }
 </script>
 
