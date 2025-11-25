@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Love Timeline ❤️</title>
+
+<style>
+body {
+  margin:0;
+  padding:0;
+  font-family:'Poppins',sans-serif;
+  background: radial-gradient(circle at top, #2b0030, #4b004b, #120012);
+  color:white;
+  text-align:center;
+  overflow-x:hidden;
+}
+
+/* Hide audio controls */
+audio { display:none; }
+
+/* Floating hearts background */
+.heart-float {
+  position:fixed;
+  font-size:22px;
+  animation:rise 8s linear infinite;
+  opacity:.8;
+  z-index:0;
+}
+@keyframes rise {
+  0% { transform:translateY(100vh); opacity:1; }
+  100% { transform:translateY(-10vh); opacity:0; }
+}
+
+/* Main wrapper */
+.wrapper {
+  position:relative;
+  z-index:5;
+  padding:40px 15px 60px;
+}
+
+/* Heading */
+h1 {
+  margin:0 0 8px;
+  font-size:30px;
+}
+.subtitle {
+  font-size:16px;
+  color:#ffd8fa;
+  margin-bottom:8px;
+}
+#intro {
+  font-size:14px;
+  color:#ffe9ff;
+  min-height:18px;
+  margin-bottom:20px;
+}
+
+/* Timeline layout */
+.timeline {
+  position:relative;
+  max-width:500px;
+  margin:0 auto;
+  padding:10px 20px 30px;
+}
+
+/* Vertical glowing line */
+.timeline::before {
+  content:"";
+  position:absolute;
+  left:50%;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:linear-gradient(#ffb3d9,#ffffff,#ffb3d9);
+  opacity:.6;
+  border-radius:999px;
+}
+
+/* Each step */
+.step {
+  position:relative;
+  width:100%;
+  margin:25px 0 35px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  opacity:0;
+  transform:translateY(30px) scale(.97);
+  transition:all .6s ease;
+}
+
+/* Alternate sides for big screens */
+@media(min-width:600px){
+  .step {
+    width:50%;
+  }
+  .step.left  { align-items:flex-end; text-align:right; margin-right:auto; padding-right:35px; }
+  .step.right { align-items:flex-start; text-align:left;  margin-left:auto;  padding-left:35px; }
+}
+
+/* Timeline dot */
+.dot {
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:#ff2f75;
+  box-shadow:0 0 14px #ff7bb0;
+}
+
+/* Card bubble */
+.card {
+  background:rgba(255,255,255,.06);
+  border-radius:16px;
+  padding:10px 14px;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.18);
+  backdrop-filter:blur(4px);
+  max-width:270px;
+}
+
+.step-title {
+  font-size:16px;
+  font-weight:600;
+  margin-bottom:4px;
+  color:#ffe4f7;
+}
+.step-time {
+  font-size:12px;
+  color:#ffbfe9;
+  margin-bottom:6px;
+}
+.step-text {
+  font-size:13px;
+  color:#ffefff;
+  line-height:1.6;
+}
+
+/* Show animation */
+.step.show {
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+/* Back button */
+.back-btn {
+  margin-top:25px;
+  padding:10px 22px;
+  background:#ff2f75;
+  color:white;
+  border:none;
+  border-radius:22px;
+  font-size:15px;
+  font-weight:600;
+  box-shadow:0 4px 14px rgba(255,50,120,.5);
+}
+.back-btn:active { transform:scale(.96); }
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 Romantic BGM -->
+<audio autoplay loop>
+  <source src="https://files.catbox.moe/6n7y9e.mp3" type="audio/mp3">
+</audio>
+
+<script>
+// Floating hearts
+const icons = ["💖","❤️","💗","💕","✨"];
+for (let i = 0; i < 25; i++) {
+  let h = document.createElement("div");
+  h.className = "heart-float";
+  h.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+  h.style.left = Math.random() * 100 + "%";
+  h.style.animationDuration = 6 + Math.random() * 4 + "s";
+  h.style.animationDelay = Math.random() * 4 + "s";
+  document.body.appendChild(h);
+}
+</script>
+
+<div class="wrapper">
+  <h1>Our Love Timeline ❤️</h1>
+  <p class="subtitle">The beautiful journey of me & my love, Vishnupriya.</p>
+  <p id="intro"></p>
+
+  <div class="timeline">
+
+    <!-- 1. College beginning -->
+    <div class="step left">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="step-title">It All Began in College 🎓</div>
+        <div class="step-time">A normal day that changed everything</div>
+        <div class="step-text">
+          In the middle of ordinary classes and college chaos, I saw you.
+          The world didn’t notice… but my heart did.
+          That simple moment quietly became the beginning of us.
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Her first message -->
+    <div class="step right">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="step-title">“Hyyy, it’s Vishnupriya.” 💌</div>
+        <div class="step-time">The very first message</div>
+        <div class="step-text">
+          You texted first: <b>“Hyyy, it’s Vishnupriya.”</b><br>
+          A short message… but it opened a big chapter.
+          From that moment, your chats became my favourite part of every day.
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. March 3 -->
+    <div class="step left">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="step-title">Your First Confession ❤️</div>
+        <div class="step-time">March 3, 2024</div>
+        <div class="step-text">
+          On this special day, <b>you confessed first</b> — and we had our <b>first call</b>.
+          Two hearts speaking for the first time…
+          creating a memory that still feels magical.
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. March 7 -->
+    <div class="step right">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="step-title">Our Love Became Official 💞</div>
+        <div class="step-time">March 7, 2024 — Our Anniversary</div>
+        <div class="step-text">
+          Four days later, on <b>March 7</b>, we both confessed.
+          That day turned two separate lives into one shared story.
+          A date forever written in our hearts. ❤️
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Love growing -->
+    <div class="step left">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="step-title">Falling Deeper Each Day 📱</div>
+        <div class="step-time">All the moments after</div>
+        <div class="step-text">
+          From cute messages to late-night calls…
+          from laughter to comfort…  
+          every moment with you made our love stronger and sweeter.
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. Future -->
+    <div class="step right">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="step-title">Our Future: Marriage 💍</div>
+        <div class="step-time">The forever we dream of</div>
+        <div class="step-text">
+          Our story is still being written.
+          But I already know how it continues —
+          a wedding, a home, a life made of love.
+          Everything started with your message:<br><br>
+          <i>“Hyyy, it’s Vishnupriya.”</i> 💖
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="back-btn" onclick="goHome()">⟵ Back to the beginning</button>
+</div>
+
+<script>
+// Typewriter intro
+const introText =
+  "Every love story has moments. These are ours, my dear Vishnupriya. 💖";
+let t = 0;
+function typeIntro() {
+  if (t < introText.length) {
+    document.getElementById("intro").innerHTML += introText.charAt(t);
+    t++;
+    setTimeout(typeIntro, 35);
+  }
+}
+typeIntro();
+
+// Reveal steps one by one
+const steps = document.querySelectorAll(".step");
+steps.forEach((step, idx) => {
+  setTimeout(() => {
+    step.classList.add("show");
+  }, 900 + idx * 700);
+});
+
+// Back to index
+function goHome() {
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
