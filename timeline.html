@@ -90,11 +90,9 @@ h1 {
   transition:all .6s ease;
 }
 
-/* Alternate sides for big screens */
+/* Alternate sides */
 @media(min-width:600px){
-  .step {
-    width:50%;
-  }
+  .step { width:50%; }
   .step.left  { align-items:flex-end; text-align:right; margin-right:auto; padding-right:35px; }
   .step.right { align-items:flex-start; text-align:left;  margin-left:auto;  padding-left:35px; }
 }
@@ -111,7 +109,7 @@ h1 {
   box-shadow:0 0 14px #ff7bb0;
 }
 
-/* Card bubble */
+/* Cards */
 .card {
   background:rgba(255,255,255,.06);
   border-radius:16px;
@@ -139,7 +137,7 @@ h1 {
   line-height:1.6;
 }
 
-/* Show animation */
+/* Step appear effect */
 .step.show {
   opacity:1;
   transform:translateY(0) scale(1);
@@ -163,9 +161,9 @@ h1 {
 
 <body>
 
-<!-- 🎵 Romantic BGM -->
+<!-- 🎵 YOUR SONG (Naan Un Azhaginile – 24) -->
 <audio autoplay loop>
-  <source src="https://files.catbox.moe/6n7y9e.mp3" type="audio/mp3">
+  <source src="https://files.catbox.moe/87ztt9.mp3" type="audio/mp3">
 </audio>
 
 <script>
@@ -183,101 +181,97 @@ for (let i = 0; i < 25; i++) {
 </script>
 
 <div class="wrapper">
+
   <h1>Our Love Timeline ❤️</h1>
   <p class="subtitle">The beautiful journey of me & my love, Vishnupriya.</p>
   <p id="intro"></p>
 
   <div class="timeline">
 
-    <!-- 1. College beginning -->
+    <!-- 1 -->
     <div class="step left">
       <div class="dot"></div>
       <div class="card">
         <div class="step-title">It All Began in College 🎓</div>
         <div class="step-time">A normal day that changed everything</div>
         <div class="step-text">
-          In the middle of ordinary classes and college chaos, I saw you.
-          The world didn’t notice… but my heart did.
-          That simple moment quietly became the beginning of us.
+          In the middle of ordinary classes, I saw you.  
+          The world didn’t notice… but my heart did.  
+          That moment quietly became the beginning of us.
         </div>
       </div>
     </div>
 
-    <!-- 2. Her first message -->
+    <!-- 2 -->
     <div class="step right">
       <div class="dot"></div>
       <div class="card">
         <div class="step-title">“Hyyy, it’s Vishnupriya.” 💌</div>
-        <div class="step-time">The very first message</div>
+        <div class="step-time">Your first message</div>
         <div class="step-text">
           You texted first: <b>“Hyyy, it’s Vishnupriya.”</b><br>
-          A short message… but it opened a big chapter.
-          From that moment, your chats became my favourite part of every day.
+          A small message… but it opened a universe.
         </div>
       </div>
     </div>
 
-    <!-- 3. March 3 -->
+    <!-- 3 -->
     <div class="step left">
       <div class="dot"></div>
       <div class="card">
-        <div class="step-title">Your First Confession ❤️</div>
+        <div class="step-title">Your Confession ❤️</div>
         <div class="step-time">March 3, 2024</div>
         <div class="step-text">
-          On this special day, <b>you confessed first</b> — and we had our <b>first call</b>.
-          Two hearts speaking for the first time…
-          creating a memory that still feels magical.
+          You confessed first…  
+          and we had our first call.  
+          A night we will never forget.
         </div>
       </div>
     </div>
 
-    <!-- 4. March 7 -->
+    <!-- 4 -->
     <div class="step right">
       <div class="dot"></div>
       <div class="card">
-        <div class="step-title">Our Love Became Official 💞</div>
+        <div class="step-title">We Said It Together 💞</div>
         <div class="step-time">March 7, 2024 — Our Anniversary</div>
         <div class="step-text">
-          Four days later, on <b>March 7</b>, we both confessed.
-          That day turned two separate lives into one shared story.
-          A date forever written in our hearts. ❤️
+          Four days later, we both confessed.  
+          And our love became official forever.
         </div>
       </div>
     </div>
 
-    <!-- 5. Love growing -->
+    <!-- 5 -->
     <div class="step left">
       <div class="dot"></div>
       <div class="card">
-        <div class="step-title">Falling Deeper Each Day 📱</div>
-        <div class="step-time">All the moments after</div>
+        <div class="step-title">Growing Love ❤️</div>
+        <div class="step-time">Every chat, every call</div>
         <div class="step-text">
-          From cute messages to late-night calls…
-          from laughter to comfort…  
-          every moment with you made our love stronger and sweeter.
+          From silly talks to deep moments…  
+          every day made our love stronger.
         </div>
       </div>
     </div>
 
-    <!-- 6. Future -->
+    <!-- 6 -->
     <div class="step right">
       <div class="dot"></div>
       <div class="card">
         <div class="step-title">Our Future: Marriage 💍</div>
-        <div class="step-time">The forever we dream of</div>
+        <div class="step-time">The days ahead</div>
         <div class="step-text">
-          Our story is still being written.
-          But I already know how it continues —
-          a wedding, a home, a life made of love.
-          Everything started with your message:<br><br>
-          <i>“Hyyy, it’s Vishnupriya.”</i> 💖
+          Our story is still being written.  
+          But I already know the ending —  
+          <b>You, me, and marriage.</b>
         </div>
       </div>
     </div>
 
   </div>
 
-  <button class="back-btn" onclick="goHome()">⟵ Back to the beginning</button>
+  <button class="back-btn" onclick="goHome()">⟵ Back to start</button>
 </div>
 
 <script>
@@ -294,7 +288,7 @@ function typeIntro() {
 }
 typeIntro();
 
-// Reveal steps one by one
+// Reveal animation
 const steps = document.querySelectorAll(".step");
 steps.forEach((step, idx) => {
   setTimeout(() => {
@@ -302,7 +296,7 @@ steps.forEach((step, idx) => {
   }, 900 + idx * 700);
 });
 
-// Back to index
+// Back to home
 function goHome() {
   window.location.href = "index.html";
 }
